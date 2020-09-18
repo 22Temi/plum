@@ -33,7 +33,7 @@ gulp zip
 ```
 You can then upload the `dist/plum.zip` to the Ghost Admin.
 
-**Tip**: At the first time or you don't want to modify the source code, you can zip up the directory directly, it is better to delete the `.git` directory, then upload the zip file to the Ghost Admin.
+**Tip**: If you didn't modify the source code, you can directly zip up the directory, it is better to delete the `.git` directory, then upload the zip file to the Ghost Admin.
 
 ## License
 
