@@ -1,0 +1,189 @@
+$body-background-color: $scheme-main !default
+$body-size: 62.5% !default
+$body-min-width: 300px !default
+$body-rendering: optimizeLegibility !default
+$body-family: $family-primary !default
+$body-overflow-x: hidden !default
+$body-overflow-y: scroll !default
+
+$body-color: $scheme-invert !default
+$body-font-size: 1.6rem !default
+$body-weight: $weight-normal !default
+$body-line-height: 1.5 !default
+
+$code-family: $family-code !default
+$code-padding: 2px 4px !default
+$code-weight: normal !default
+$code-size: .875em !default
+
+$small-font-size: 0.875em !default
+
+$hr-background-color: $background !default
+$hr-height: 2px !default
+$hr-margin: 2.4rem 0 !default
+
+$strong-color: $scheme-invert !default
+$strong-weight: $weight-bold !default
+
+$pre-font-size: 1.4rem !default
+$pre-padding: 2rem 2.4rem !default
+$pre-code-font-size: 1em !default
+
+html
+  background-color: $body-background-color
+  font-size: $body-size
+  //-moz-osx-font-smoothing: grayscale
+  //-webkit-font-smoothing: antialiased
+  min-width: $body-min-width
+  overflow-x: $body-overflow-x
+  overflow-y: $body-overflow-y
+  //text-rendering: $body-rendering
+
+  -webkit-text-size-adjust: 100%
+  -webkit-tap-highlight-color: transparent
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section
+  display: block
+
+body,
+button,
+input,
+select,
+textarea
+  font-family: $body-family
+
+code,
+pre,
+kbd,
+samp
+  -moz-osx-font-smoothing: auto
+  -webkit-font-smoothing: auto
+  font-family: $code-family
+
+body
+  color: $body-color
+  font-size: $body-font-size
+  font-weight: $body-weight
+  line-height: $body-line-height
+
+// Inline
+
+a
+  color: currentColor
+  cursor: pointer
+  text-decoration: none
+  strong
+    color: currentColor
+
+code
+  background-color: $code-background
+  color: $code
+  font-size: $code-size
+  font-weight: $code-weight
+  padding: $code-padding
+  border-radius: 4px
+
+hr
+  //background-color: $hr-background-color
+  border: none
+  display: block
+  height: $hr-height
+  margin: $hr-margin
+
+input[type="checkbox"],
+input[type="radio"]
+  vertical-align: baseline
+
+small
+  font-size: $small-font-size
+
+span
+  font-style: inherit
+  font-weight: inherit
+
+b,
+strong
+  color: $strong-color
+  font-weight: $strong-weight
+
+// Block
+
+fieldset
+  border: none
+
+pre
+  +overflow-touch
+  background-color: $pre-background
+  color: $pre
+  font-size: $pre-font-size !important
+  overflow-x: auto
+  padding: $pre-padding
+  white-space: pre
+  word-wrap: normal
+  border-radius: 5px
+  line-height: 1.6
+  code
+    background-color: transparent
+    color: currentColor
+    font-size: $pre-code-font-size
+    padding: 0
+
+table
+  td,
+  th
+    vertical-align: top
+    &:not([align])
+      text-align: left
+
+svg
+  stroke-width: 0
+  stroke: none
+  fill: currentColor
+
+ol
+  list-style: decimal
+
+.hidden
+  display: none !important
+
+.outer
+  display: block
+
+.dot-divider
+  opacity: .8
+
+.is-clipped
+  overflow: hidden !important
+
+.is-sr-only
+  border: none !important
+  clip: rect(0, 0, 0, 0) !important
+  height: 0.01em !important
+  overflow: hidden !important
+  padding: 0 !important
+  position: absolute !important
+  white-space: nowrap !important
+  width: 0.01em !important
+
+.bio,
+.excerpt
+  @extend %text-fonts
+  @extend %text-color
+
+.loading
+  svg.spinner
+    display: inline !important
+    pointer-events: none
+    animation: spinAround 1s cubic-bezier(.6,0,.4,1) infinite
+
+@keyframes spinAround
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(359deg)

@@ -1,0 +1,78 @@
+
+.filter-bar
+  position: relative
+  overflow: auto
+  background-color: $scheme-main
+  padding: 2.4rem
+  border-radius: $radius-large
+
+  .tips
+    font-size: 2rem
+    font-weight: 700
+    margin: 0 0 2.4rem
+    text-align: center
+    text-transform: uppercase
+
+  .items
+    +hlevel
+    margin: 0 -.8rem 0 0
+    padding: 0
+
+  .item
+    margin: 0 .8rem 1.6rem 0
+    z-index: $z-index-10
+
+    &--tag
+      display: block
+      //32px + 2px
+      line-height: 3.2rem
+      font-size: $size-14
+      font-weight: $weight-medium
+      padding: 0 2.4rem
+      text-align: center
+      border-radius: 1.7rem
+      border: 1px solid $grey-08
+      color: $scheme-invert
+      transition: color .3s ease, border-color .3s ease
+      cursor: pointer
+      position: relative
+      overflow: hidden
+
+      &::before,
+      &::after
+        content: ''
+        width: 0
+        height: 100%
+        opacity: 0
+        background: $primary
+        position: absolute
+        top: 0
+        z-index: -1
+        transition: width .3s ease, opacity .3s ease
+
+      &::before
+        left: 50%
+        border-radius: 0 1.7rem 1.7rem 0
+
+      &::after
+        right: 50%
+        border-radius: 1.7rem 0 0 1.7rem
+
+      &:focus,
+      &:hover
+        background: $grey-light
+
+      @media (hover: hover)
+        &:focus,
+        &:hover
+          border-color: $scheme-main
+          color: $white
+          background: transparent
+
+          &::before,
+          &::after
+            width: 50%
+            opacity: 1
+
+.modal-background.tags
+  background: $modal-background

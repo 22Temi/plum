@@ -1,0 +1,29 @@
+
+$sn-icon-margin-right: 3.2rem
+$sn-icon-margin-bottom: 1.2rem
+$sn-icon-size: 1.6rem
+
+.secondary-navbar
+  +hlevel
+
+  margin: 0 -#{$sn-icon-margin-right} -#{$sn-icon-margin-bottom} 0
+  max-width: 100%
+
+  .icon
+    flex: 0 0 auto
+    margin: 0 $sn-icon-margin-right $sn-icon-margin-bottom 0
+    transition: color .3s ease
+
+    +svg-full-wrap(2rem)
+
+    span
+      font-size: $size-small
+      line-height: 1
+      font-weight: $weight-semibold
+      margin-left: .8rem
+      text-transform: uppercase
+
+    &:focus,
+    &:hover
+      color: $primary
+

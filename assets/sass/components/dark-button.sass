@@ -1,0 +1,46 @@
+
+.dark-button
+  +svg-full-wrap(1.9rem)
+  position: relative
+  cursor: pointer
+  padding: 0 1.2rem
+  transition: transform 1.5s cubic-bezier(0.215,0.61,0.355,1), opacity 1.5s cubic-bezier(0.215,0.61,0.355,1)
+
+  &.sun,
+  &.shadow-sun,
+  &.moon
+    &.disabled
+      opacity: 0
+      z-index: $z-index-10
+    &:focus
+      outline: none
+
+  &.moon,
+  &.sun
+    z-index: $z-index-20
+
+  &.moon,
+  &.shadow-sun
+    //12 + 12 + 19 = 43
+    margin-left: -4.3rem
+
+  &.sun:not(.disabled)
+    &:hover
+      transform: translateY(30px)
+      opacity: 0
+
+      & + .dark-button.moon
+        opacity: 1
+
+  &.moon:not(.disabled)
+    &:hover
+      transform: translateY(30px)
+      opacity: 0
+
+      & + .dark-button.shadow-sun
+        opacity: 1
+
+  &.sun:not(.disabled),
+  &.moon:not(.disabled)
+    &:focus
+      outline: $primary dashed 2px

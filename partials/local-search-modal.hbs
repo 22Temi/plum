@@ -1,0 +1,17 @@
+<div id="search-modal" class="modal search">
+    <div class="modal-background search"></div>
+    <button class="modal-close is-xlarge" aria-label="{{t "close"}}"></button>
+    <div class="modal-content search">
+        <div class="field search">
+            <div class="control loading search" data-no-api-key-tips="{{t "searchContentAPIKey is not defined."}}">
+                {{> "icons/spinner"}}
+                {{> "icons/search"}}
+                <input id="local-site-search" name="q" class="input search" disabled type="search" placeholder="{{t "Loading data"}}"
+                       aria-required="true" aria-label="{{t "search the site"}}"
+                       maxlength="300">
+            </div>
+            <p class="tips error" data-error-tips="{{t "Error!"}}" role="alert" aria-relevant="text"></p>
+        </div>
+        <div class="results" data-no-result-tips="{{t "No results. (>_<)"}}" aria-live="polite" aria-atomic="true"></div>
+    </div>
+</div>

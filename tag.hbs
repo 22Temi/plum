@@ -1,0 +1,23 @@
+{{!< default}}
+
+<main class="main outer">
+    <div class="inner">
+        <div class="content">
+            <div class="posts">
+                {{^is "paged"}}
+                    {{#tag}}
+                        <div class="tag-name">{{name}}</div>
+                    {{/tag}}
+                {{/is}}
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                    <hr>
+                {{/foreach}}
+            </div>
+
+            {{pagination}}
+        </div>
+    </div>
+</main>
+
+{{> common}}

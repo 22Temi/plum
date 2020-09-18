@@ -1,0 +1,84 @@
+
+.home-hero
+  display: block
+  border-bottom: 1px dashed $grey-02
+  padding-bottom: 1.8rem
+
+  .content
+    display: block
+
+    .header
+      display: flex
+      +from($main-breakpoint)
+        align-items: center
+      +until($main-breakpoint)
+        flex-direction: column
+      margin: 3.2rem 0 1.25rem
+
+    .logo
+      margin: 0 1.4rem 0 0
+      +svg-full-wrap(var(--logo-height, 4.3rem))
+      +until($main-breakpoint)
+        justify-content: flex-start
+
+      svg
+        width: auto
+
+      img
+        max-height: var(--logo-height, 3.2rem)
+        width: auto
+
+    .text-logo
+      display: block
+      font-size: 2.4rem
+      line-height: 1
+      font-weight: $weight-bold
+      letter-spacing: 2px
+
+    .site-description
+      display: inline-block
+      font-size: $size-12
+      letter-spacing: .5px
+      color: $grey
+      +from($main-breakpoint)
+        align-self: flex-end
+      +until($main-breakpoint)
+        margin: .6rem 0 0
+
+
+    .menu
+      display: flex
+      flex-wrap: wrap
+      margin-left: -.6rem
+
+      &__item
+        flex: 0 0 auto
+        padding: 0.6rem 0.6rem
+        font-size: $size-13
+        text-transform: uppercase
+        letter-spacing: 1px
+        transition: background .2s ease
+
+        &:focus,
+        &:hover
+          background: $grey-light
+
+    .menu-bar
+      +from($main-breakpoint)
+        +flex-row-cross-center
+        justify-content: space-between
+      +until($main-breakpoint)
+        +flex-col-default
+
+    .menu-icons
+      +flex-row-cross-center
+      +until($main-breakpoint)
+        margin: 1.5rem 0 .3rem -1.4rem
+
+      .divider
+        display: block
+        width: 2px
+        height: 1.9rem
+        background: $grey-light
+        margin: 0 1.2rem
+

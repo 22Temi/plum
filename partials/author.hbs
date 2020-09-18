@@ -1,0 +1,36 @@
+<section class="author-hero outer">
+    <div class="inner">
+        <div class="content">
+            {{#if profile_image}}
+                <div class="avatar">
+                    <figure>
+                        <img class="avatar-img"
+                             srcset="{{img_url profile_image size="xs"}} 1x, {{img_url profile_image size="s"}} 2x"
+                             src="{{img_url profile_image size="s"}}"
+                             alt="{{name}}">
+                    </figure>
+                </div>
+            {{/if}}
+            <div class="name">{{name}}</div>
+            {{#if bio}}
+                <div class="bio">{{bio}}</div>
+            {{/if}}
+            <div class="line">
+                <span>{{plural total_posts empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}</span>
+                {{#if twitter}}
+                    <span class="dot-divider">•</span>
+                    <a href="{{twitter_url}}" target="_blank" rel="noopener" class="icon" aria-label="twitter">
+                        {{> "icons/twitter"}}
+                    </a>
+                {{/if}}
+                {{#if facebook}}
+                    <span class="dot-divider">•</span>
+                    <a href="{{facebook_url}}" target="_blank" rel="noopener" class="icon" aria-label="facebook">
+                        {{> "icons/facebook"}}
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
+

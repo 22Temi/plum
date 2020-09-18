@@ -1,0 +1,21 @@
+<script>
+    function getParameterByName(param, url) {
+        url || (url = window.location.href);
+        param = param.replace(/[\[\]]/g, '\\$&');
+        var re = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)').exec(url);
+        return re ? re[2] ? decodeURIComponent(re[2].replace(/\+/g, ' ')) : '' : null
+    }
+
+    var action = getParameterByName('action');
+
+    if (action && ('signin' === action || 'subscribe' === action) && localStorage.loginRedirectAfterSubscribing) {
+        var u = new URL(localStorage.loginRedirectAfterSubscribing);
+        localStorage.removeItem('loginRedirectAfterSubscribing');
+        if (u.hash) {
+            window.location.href = u.href;
+        } else {
+            u.hash = 'footer';
+            window.location.href = u.href;
+        }
+    }
+</script>

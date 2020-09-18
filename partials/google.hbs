@@ -1,0 +1,12 @@
+<form method="get" id="site-search" action="https://www.google.com/search" role="search">
+    <input id="site-search-url" type="hidden" name="as_sitesearch" value="{{@site.url}}"/>
+    <input id="site-search-input" class="input site-search" type="search" name="q" required maxlength="300" placeholder="{{t "Google Search"}}" aria-label="{{t "Google site search"}}"/>
+    <button id="site-search-button" type="submit" class="search-button">
+        {{> "icons/search"}}
+    </button>
+</form>
+
+<script>
+    var siteUrl = document.querySelector('#site-search-url');
+    siteUrl.value = (new URL(siteUrl.value)).hostname;
+</script>

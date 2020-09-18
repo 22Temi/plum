@@ -1,0 +1,15 @@
+{{!< default}}
+
+<main class="main outer">
+    <div class="inner">
+        <div class="content">
+            <section class="error-message">
+                <h1 class="error-code">{{statusCode}}</h1>
+                <p class="error-description">{{message}}</p>
+                <button class="button error" onClick="window.location.href='{{@site.url}}'; return false;">{{t "homepage"}}</button>
+            </section>
+        </div>
+    </div>
+</main>
+
+{{> common}}

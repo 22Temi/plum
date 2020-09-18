@@ -1,0 +1,47 @@
+<div id="ss360-trigger" class="search-button" role="button" aria-label="{{t "search the site"}}" tabindex="0">
+    {{> "icons/search"}}
+</div>
+
+<script>
+    window.ss360Config = {
+        siteId: "",
+        suggestions: {
+            show: false
+        },
+        style: {
+            searchBox: {
+                text: {
+                    color: "#333333",
+                    size: "14px"
+                },
+                background: {
+                    color: "#ffffff"
+                },
+                border: {
+                    color: "#dddddd",
+                    radius: "0px"
+                },
+                padding: "8px",
+                icon: {
+                    image: "magnifier",
+                    color: "#666666"
+                }
+            }
+        },
+        results: {
+            fullScreenConfig: {
+                trigger: "#ss360-trigger",
+                caption: "Search this site"
+            }
+        },
+        tracking: {
+            providers: []
+        },
+        showErrors: false
+    };
+
+    var e = document.createElement("script");
+    e.async = !0;
+    e.src = "https://cdn.sitesearch360.com/v13/sitesearch360-v13.min.js";
+    document.getElementsByTagName("body")[0].appendChild(e);
+</script>

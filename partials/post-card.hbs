@@ -1,0 +1,54 @@
+<article class="post-card">
+    {{#if feature_image}}
+        <a class="cover" href="{{url}}" aria-label="{{title}}">
+            <figure>
+                <img srcset="{{img_url feature_image size="s"}} 420w, {{img_url feature_image size="m"}} 840w, {{img_url feature_image size="l"}} 1536w"
+                     sizes="(min-width: 768px) 720px, calc(100vw - 48px)" src="{{img_url feature_image size="l"}}"
+                     alt="">
+            </figure>
+        </a>
+    {{/if}}
+
+    <header class="header">
+        {{#with primary_tag}}
+            <a class="primary-tag" href="{{url}}">{{name}}</a>
+        {{/with}}
+
+        <a class="title-link" href="{{url}}">
+            <h2 class="title">{{title}}</h2>
+        </a>
+    </header>
+
+    {{#if excerpt}}
+        <div class="excerpt">
+            <p>
+                {{excerpt}}
+            </p>
+        </div>
+    {{/if}}
+
+    <footer class="meta">
+        {{#primary_author}}
+            {{#if profile_image}}
+                <a href="{{url}}" class="avatar">
+                    <figure>
+                        <img class="avatar-img"
+                             srcset="{{img_url profile_image size="xxs"}} 1x, {{img_url profile_image size="xs"}} 2x, {{img_url profile_image size="s"}} 3x"
+                             src="{{img_url profile_image size="s"}}" alt="{{name}}">
+                    </figure>
+                </a>
+            {{/if}}
+        {{/primary_author}}
+
+        <div class="extra">
+            {{#primary_author}}
+                <a class="author" href="{{url}}">{{name}}</a>
+            {{/primary_author}}
+            <div class="extra__line">
+                <span class="post-datetime" data-post-date="{{date format="x"}}">{{date timeago="true"}}</span>
+                <span class="dot-divider">•</span>
+                <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
+            </div>
+        </div>
+    </footer>
+</article>

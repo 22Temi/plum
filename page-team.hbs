@@ -1,0 +1,20 @@
+{{!< default}}
+
+<main class="main outer">
+    <div class="inner">
+        <div class="content">
+            <div class="team">
+                <header class="header"><h1 class="tips">{{t "Authors"}}</h1></header>
+                <section class="authors">
+                    {{#get "authors"}}
+                        {{#foreach authors}}
+                            {{> "team-card"}}
+                        {{/foreach}}
+                    {{/get}}
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+{{> common}}

@@ -1,0 +1,62 @@
+.team
+  +flex-col-cross-center
+  padding: 2.4rem 0 0
+  margin: 0 0 -4.3rem
+
+  .header
+    margin: 0 0 8.3rem
+
+  .tips
+    font-size: 3.2rem
+    line-height: 1
+
+  .authors
+    +hlevel
+    width: 100%
+
+  .card-wrap
+    +from($main-breakpoint)
+      flex: 0 1 50%
+      &:nth-of-type(2n+1)
+        padding: 0 3rem 6.7rem 0
+      &:nth-of-type(2n)
+        padding: 0 0 6.7rem 3rem
+    +until($main-breakpoint)
+      flex: 0 1 100%
+      padding: 0 0 6.7rem
+
+  .card
+    +flex-col-center
+    position: relative
+    width: 100%
+    padding: 3.2rem
+    border-radius: 2rem
+    background: $grey-light
+
+    &:focus
+      .name
+        color: $primary
+
+  .avatar-wrap
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translateX(-50%) translateY(-50%)
+
+  .avatar
+    +avatar(7rem)
+
+  .bio
+    display: block
+    font-size: 1em
+    text-align: center
+    margin: 2.4rem 0 0
+
+  .name
+    display: block
+    font-size: $small-font-size
+    text-align: center
+    transition: color .3s ease
+
+  .bio + .name
+    margin: 2.4rem 0 0

@@ -1,0 +1,24 @@
+
+.footer
+  &.outer
+    background-color: $grey-light
+
+  .content
+    +flex-col-default
+    padding: 6.4rem 0 3.2rem
+
+  .primary
+    +from($main-breakpoint)
+      +flex-default
+      justify-content: space-between
+    +until($main-breakpoint)
+      +flex-col-default
+
+  .copyright
+    display: inline-block
+    font-size: $size-12
+    +from($main-breakpoint)
+      flex: 0 0 auto
+      align-self: flex-end
+    +until($main-breakpoint)
+      margin-top: 2.4rem

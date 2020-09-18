@@ -1,0 +1,47 @@
+
+.pagination
+  +hlevel
+  @extend %unselectable
+
+  .number
+    display: block
+    margin-right: 4rem
+
+  .current
+    display: inline
+    font-size: $size-37
+    font-weight: $weight-900
+    color: $primary
+    vertical-align: middle
+    line-height: 1
+
+  .divider,
+  .total
+    display: inline
+    font-size: $size-13
+    font-weight: $weight-bold
+    vertical-align: super
+    color: $grey
+
+  .flipping
+    +svg-full-wrap(1.4rem, $primary)
+    width: 4rem
+    height: 4rem
+    border-radius: $radius-rounded
+    border: 1px solid $grey-03
+    background-color: transparent
+    &:not(.last-child)
+      margin-right: 2.4rem
+    cursor: pointer
+    transition: border-color .3s ease
+
+    &:not(.disabled)
+      &:focus,
+      &:hover,
+      &:active
+        border-color: $primary
+
+    &.disabled
+      opacity: 0.5
+      pointer-events: none
+

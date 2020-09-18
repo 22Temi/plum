@@ -1,0 +1,20 @@
+<div id="tags-modal" class="modal">
+    <div class="modal-background tags"></div>
+    <div class="modal-content">
+        <div class="filter-bar">
+            <button class="modal-close is-medium" aria-label="{{t "close"}}"></button>
+            <div class="tips">{{t "Tags"}}</div>
+            <ul class="items">
+                {{#get "tags" limit="all" filter="visibility: public"}}
+                    {{#if tags}}
+                        {{#foreach tags}}
+                            <li class="item">
+                                <a href="{{url}}" class="item--tag">{{name}}</a>
+                            </li>
+                        {{/foreach}}
+                    {{/if}}
+                {{/get}}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<button id="load-comments" class="load-comments" type="button" data-error-tips="{{t "Can't load comments"}}"
+        onClick="InitDisqus(); return false;">
+    {{> "icons/spinner"}}
+    {{t "Load comments"}}
+</button>
+
+<div id="disqus_thread" class="hidden"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = "{{url absolute="true"}}";
+        this.page.identifier = "ghost-{{comment_id}}"
+    };
+
+    var disqus_shortname = '';
+
+    function InitDisqus() {
+        var loadCommentsElement = document.querySelector('#load-comments');
+        if(loadCommentsElement.classList.contains('loaded')) {
+            return;
+        }
+        loadCommentsElement.classList.add('loading');
+
+        var d = document, s = d.createElement('script');
+        s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        s.async = true;
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+
+        setTimeout(function () {
+            var loadCommentsElement = document.querySelector('#load-comments');
+
+            if (document.querySelector('#disqus_thread').innerHTML !== '') {
+                loadCommentsElement.classList.add('hidden');
+                document.querySelector('#disqus_thread').classList.remove('hidden');
+            } else {
+                loadCommentsElement.innerText = loadCommentsElement.getAttribute('data-error-tips');
+            }
+
+            loadCommentsElement.classList.remove('loading');
+            loadCommentsElement.classList.add('loaded');
+        }, 5000);
+    }
+</script>

@@ -1,0 +1,39 @@
+$modal-z: $z-index-100 !default
+
+$modal-content-width: 720px !default
+
+$modal-close-right: .9rem !default
+$modal-close-top: .9rem !default
+
+.modal
+  @extend %overlay
+  +flex-col-center
+  display: none
+  overflow: hidden
+  position: fixed
+  z-index: $modal-z
+
+  &.is-active
+    display: flex
+
+.modal-background
+  @extend %overlay
+
+.modal-content
+  +flex-col-default
+  position: relative
+  margin: 4rem 2.4rem
+  width: calc(100vw - 4.8rem)
+  max-width: $modal-content-width
+  overflow: hidden
+
+.modal-close
+  @extend %delete
+  background: none
+  position: absolute
+  right: $modal-close-right
+  top: $modal-close-top
+
+  &::before,
+  &::after
+    background-color: $grey

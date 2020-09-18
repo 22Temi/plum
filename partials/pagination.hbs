@@ -1,0 +1,27 @@
+<nav class="pagination" aria-label="{{t "pagination"}}">
+    <div class="number">
+        <span id="pagination__current" class="current" aria-label="{{t "current page number"}}">{{page}}</span>
+        <span class="divider">/ </span>
+        <span id="pagination__total" class="total" aria-label="{{t "total page number"}}">{{pages}}</span>
+    </div>
+    {{> padding-zero-js}}
+    {{#if prev}}
+        <a href="{{page_url prev}}" class="flipping" aria-label="{{t "previous page"}}" role="button" tabindex="0">
+            {{> "icons/angle-left"}}
+        </a>
+    {{else}}
+        <a href="{{page_url prev}}" class="flipping disabled" aria-hidden="true" role="button">
+            {{> "icons/angle-left"}}
+        </a>
+    {{/if}}
+
+    {{#if next}}
+        <a href="{{page_url next}}" class="flipping" aria-label="{{t "next page"}}" role="button" tabindex="0">
+            {{> "icons/angle-right"}}
+        </a>
+    {{else}}
+        <a href="{{page_url next}}" class="flipping disabled" aria-hidden="true" role="button">
+            {{> "icons/angle-right"}}
+        </a>
+    {{/if}}
+</nav>

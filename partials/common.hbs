@@ -1,0 +1,13 @@
+{{> filter-bar}}
+
+{{#contentFor "header"}}
+    {{> hero}}
+{{/contentFor}}
+
+{{#contentFor "main-css"}}
+    <link href="{{asset "built/plum.min.css"}}" rel="stylesheet" type="text/css">
+{{/contentFor}}
+
+{{#contentFor "main-js"}}
+    <script src="{{asset "built/plum.min.js"}}"></script>
+{{/contentFor}}

@@ -1,0 +1,38 @@
+
+// ![img](/some/image.jpg#full)
+img[src$="#full"]
+  position: relative
+  max-width: 100vw
+  left: 50%
+  right: 50%
+  margin-left: -50vw !important
+  margin-right: -50vw !important
+
+/*
+ * ![img](/some/image.jpg)
+ * <small>image caption</small>
+ */
+img + br + small
+  display: block
+  +from($main-breakpoint)
+    margin: .5em 0 2.4rem !important
+  +until($main-breakpoint)
+    margin: .3em 0 2rem !important
+  text-align: center
+  color: $grey
+
+.footnotes-sep
+  margin: 3.2rem 0 3.2rem
+
+.footnotes
+  font-size: $small-font-size
+  line-height: 1.5
+
+.footnotes p
+  margin: 0
+
+.footnote-backref
+  color: $link
+  font-size: inherit
+  text-decoration: none !important
+  box-shadow: none !important

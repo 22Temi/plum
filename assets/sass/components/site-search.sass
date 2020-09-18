@@ -1,0 +1,32 @@
+
+form#site-search
+  +flex-row-cross-center
+  position: relative
+
+.input.site-search
+  opacity: 0
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  +from($main-breakpoint)
+    right: 4.2rem
+  +until($main-breakpoint)
+    left: 4.2rem
+  width: 0
+  max-width: none
+  z-index: $z-index-100
+  transition: width .3s ease, opacity .3s ease
+
+  &.is-active
+    opacity: 1
+    +from($main-breakpoint)
+      width: 300px
+    +until($main-breakpoint)
+      width: 75vw
+
+button#site-search-button
+  +flex-row-center
+  +unselectable
+  color: $scheme-invert
+  border: none
+  background: transparent

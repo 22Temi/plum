@@ -1,0 +1,28 @@
+.load-comments
+  +control
+  +unselectable
+  justify-content: center
+  height: 5rem
+  padding: 0 17px
+  font-size: 13px
+  line-height: 1
+  letter-spacing: 1px
+  text-transform: uppercase
+  color: $scheme-main
+  background: $scheme-invert
+  cursor: pointer
+  white-space: nowrap
+
+  +until($main-breakpoint)
+    width: 100%
+
+  transition: background .25s ease
+  &:focus
+    background: $button
+
+  svg.spinner
+    display: none
+    width: 1.6rem
+    height: 1.6rem
+    margin-right: 1.2rem
+

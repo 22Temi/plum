@@ -1,0 +1,63 @@
+
+=placeholder
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
+  @each $placeholder in $placeholders
+    &:#{$placeholder}-placeholder
+      @content
+
+=input
+  @extend %control
+  background-color: $scheme-main
+  border-color: $grey-02
+  color: $scheme-invert
+  +placeholder
+    color: $grey-08
+  &:hover
+    border-color: $scheme-invert
+  &:focus,
+  &:active
+    border-color: $primary
+
+.field
+  display: flex
+  +from($main-breakpoint)
+    justify-content: flex-start
+    align-items: center
+  +until($main-breakpoint)
+    flex-direction: column
+
+.control
+  font-size: 1em
+
+.input
+  +input
+  max-width: 100%
+  width: 100%
+
+.button
+  +control
+  +unselectable
+  background: $button
+  border-color: $button
+  color: $white
+  cursor: pointer
+
+  justify-content: center
+  padding: calc(0.5em - #{$control-border-width}) 1em
+  white-space: nowrap
+
+  &[disabled]
+    opacity: .5
+
+  background-size: 4rem 4rem
+  &:not([disabled])
+    &:focus,
+    &:hover
+      background-image: linear-gradient(135deg, $black-01 25%, transparent 25%, transparent 50%, $black-01 50%, $black-01 75%, transparent 75%, transparent)
+      animation: button-bg-move 2.8s linear 1
+
+@keyframes button-bg-move
+  0%
+    background-position: 0 0
+  100%
+    background-position: 4rem 8rem

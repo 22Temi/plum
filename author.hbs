@@ -1,0 +1,21 @@
+{{!< default}}
+
+{{#author}}
+    {{> author total_posts=../pagination.total}}
+{{/author}}
+
+<main class="main outer">
+    <div class="inner">
+        <div class="content">
+            <div class="posts">
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                    <hr>
+                {{/foreach}}
+            </div>
+            {{pagination}}
+        </div>
+    </div>
+</main>
+
+{{> common}}

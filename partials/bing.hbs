@@ -1,0 +1,6 @@
+<form method="get" id="site-search" action="https://www.bing.com/search" role="search">
+    <input id="site-search-input" class="input site-search bing" type="search" name="q" data-site-url="{{@site.url}}" required maxlength="300" placeholder="{{t "Bing Search"}}" aria-label="{{t "Bing site search"}}"/>
+    <button id="site-search-button" type="submit" class="search-button">
+        {{> "icons/search"}}
+    </button>
+</form>

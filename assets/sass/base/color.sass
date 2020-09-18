@@ -1,0 +1,160 @@
+
+@function color-hex2rgb($color)
+  @return red($color), green($color), blue($color)
+
+@function css-color-variable($name)
+  @return var(--c-#{$name})
+
+@function rgb-color-with-alpha($name, $alpha: 1)
+  $rgb-name: rgb
+  $rgba-name: rgba
+  @if $alpha == 1
+    @return #{$rgb-name}#{unquote('(')}var#{unquote('(')}--c-#{$name}#{unquote(')')}#{unquote(')')}
+  @else
+    @return #{$rgba-name}#{unquote('(')}var#{unquote('(')}--c-#{$name}#{unquote(')')}, #{$alpha}#{unquote(')')}
+
+$l-black: #1f1f1f
+$l-grey: #454140
+$l-grey-light: #eeeeee
+$l-grey-pre: #ccc
+$l-grey-pre-bg: #2d2d2d
+$l-grey-link-visited: #787878
+$l-white: #f6f6f6
+$l-violet: #9B4DCA
+$l-blue: #1C54F5
+$l-red: #b71c1c
+$l-green: #33691e
+$l-orange: #A24100
+
+$d-black: #191919
+$d-grey: #a3a3a3
+$d-grey-light: #232323
+$d-grey-pre: #ccc
+$d-grey-pre-bg: #2d2d2d
+$d-grey-link-visited: #686868
+$d-grey-tags-modal-bg: #5f5f5f
+$d-white: #d1d1d1
+$d-violet: scale_color($l-violet, $lightness: -9%)
+$d-blue: #5189e8
+$d-red: scale_color($l-red, $lightness: 37%)
+$d-green: #00c853
+$d-orange: #e0610d
+$d-button: scale_color($l-violet, $lightness: -19%)
+
+=light-colors
+  --c-black: #{color-hex2rgb($l-black)}
+  --c-grey: #{color-hex2rgb($l-grey)}
+  --c-grey-light: #{color-hex2rgb($l-grey-light)}
+  --c-white: #{color-hex2rgb($l-white)}
+  --c-violet: #{color-hex2rgb($l-violet)}
+  --c-blue: #{color-hex2rgb($l-blue)}
+  --c-red: #{color-hex2rgb($l-red)}
+  --c-green: #{color-hex2rgb($l-green)}
+  --c-orange: #{color-hex2rgb($l-orange)}
+  --c-scheme-main: #{css-color-variable('white')}
+  --c-scheme-invert: #{css-color-variable('black')}
+  --c-background: #{css-color-variable('white')}
+  --c-background-invert: #{css-color-variable('black')}
+  --c-title: #{css-color-variable('black')}
+  --c-text: #{css-color-variable('black')}
+  --c-primary: #{css-color-variable('violet')}
+  --c-link: #{css-color-variable('blue')}
+  --c-link-visited: #{css-color-variable('blue')}
+  --c-pre: #{$l-grey-pre}
+  --c-pre-background: #{$l-grey-pre-bg}
+  --c-code: #{css-color-variable('orange')}
+  --c-code-background: transparent
+  --c-success: #{css-color-variable('green')}
+  --c-danger: #{css-color-variable('red')}
+  --c-modal-background: #{css-color-variable('black')}
+  --c-button: #{css-color-variable('primary')}
+
+\:root
+  +light-colors
+
+=dark-colors
+  --c-black: #{color-hex2rgb($d-black)}
+  --c-grey: #{color-hex2rgb($d-grey)}
+  --c-grey-light: #{color-hex2rgb($d-grey-light)}
+  --c-white: #{color-hex2rgb($d-white)}
+  --c-violet: #{color-hex2rgb($d-violet)}
+  --c-blue: #{color-hex2rgb($d-blue)}
+  --c-red: #{color-hex2rgb($d-red)}
+  --c-green: #{color-hex2rgb($d-green)}
+  --c-orange: #{color-hex2rgb($d-orange)}
+  --c-scheme-main: #{css-color-variable('black')}
+  --c-scheme-invert: #{css-color-variable('white')}
+  --c-background: #{css-color-variable('black')}
+  --c-background-invert: #{css-color-variable('white')}
+  --c-title: #{css-color-variable('white')}
+  --c-text: #{css-color-variable('grey')}
+  --c-primary: #{css-color-variable('violet')}
+  --c-link: #{css-color-variable('blue')}
+  --c-link-visited: #{css-color-variable('blue')}
+  --c-pre: #{$d-grey-pre}
+  --c-pre-background: #{$d-grey-pre-bg}
+  --c-code: #{css-color-variable('orange')}
+  --c-code-background: transparent
+  --c-success: #{css-color-variable('green')}
+  --c-danger: #{css-color-variable('red')}
+  --c-modal-background: #{color-hex2rgb($d-grey-tags-modal-bg)}
+  --c-button: #{color-hex2rgb($d-button)}
+
+[data-theme = "dark"]
+  +dark-colors
+
+@media (prefers-color-scheme: dark)
+  \:root:not(.user-color-scheme)
+    +dark-colors
+
+$black: rgb-color-with-alpha('black')
+$black-01: rgb-color-with-alpha('black', .1)
+
+$grey: rgb-color-with-alpha('grey')
+$grey-08: rgb-color-with-alpha('grey', .8)
+$grey-05: rgb-color-with-alpha('grey', .5)
+$grey-03: rgb-color-with-alpha('grey', .3)
+$grey-02: rgb-color-with-alpha('grey', .2)
+$grey-005: rgb-color-with-alpha('grey', .05)
+
+$grey-light: rgb-color-with-alpha('grey-light')
+
+$white: rgb-color-with-alpha('white')
+$violet: rgb-color-with-alpha('violet')
+$blue: rgb-color-with-alpha('blue')
+
+$primary: rgb-color-with-alpha('primary')
+$primary-01: rgb-color-with-alpha('primary', .1)
+$primary-05: rgb-color-with-alpha('primary', .5)
+
+$scheme-main: rgb-color-with-alpha('scheme-main')
+
+$scheme-invert: rgb-color-with-alpha('scheme-invert')
+$scheme-invert-06: rgb-color-with-alpha('scheme-invert', .6)
+$scheme-invert-03: rgb-color-with-alpha('scheme-invert', .3)
+
+$background: rgb-color-with-alpha('background')
+$background-invert: rgb-color-with-alpha('background-invert')
+
+// Code colors
+
+$code: rgb-color-with-alpha('code')
+$code-background: rgb-color-with-alpha('code-background')
+
+// same as prism.js
+$pre: css-color-variable('pre')
+$pre-background: css-color-variable('pre-background')
+
+// Link colors
+$link: rgb-color-with-alpha('link')
+$link-visited: rgb-color-with-alpha('link-visited')
+
+$success: rgb-color-with-alpha('green')
+$danger: rgb-color-with-alpha('red')
+
+$modal-background: rgb-color-with-alpha('modal-background', .86)
+
+$title: rgb-color-with-alpha('title')
+$text: rgb-color-with-alpha('text')
+
+$button: rgb-color-with-alpha('button')

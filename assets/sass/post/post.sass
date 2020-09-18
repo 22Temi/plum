@@ -1,0 +1,286 @@
+
+$post-max-width: $widescreen
+$post-breakpoint: $widescreen
+
+$post-content-max-width: 720px
+$post-content-breakpoint: $post-content-max-width
+
+.post-content
+  @extend %text-fonts
+  @extend %text-color
+  line-height: 2.6rem
+
+  ol
+    padding-left: 1.82rem
+    @supports (-webkit-hyphens: none)
+      padding-left: 2.3rem
+
+  ul
+    padding-left: 1.9rem
+    @supports (-moz-osx-font-smoothing: grayscale)
+      padding-left: 1.6rem
+
+  ul
+    list-style: square
+
+  ul ul
+    list-style: circle
+    margin-top: 2rem
+
+  ol
+    list-style: decimal
+
+  ol ol
+    margin-top: 2rem
+
+  li
+    overflow-wrap: break-word
+    margin: 0 0 2rem
+
+  blockquote
+    margin-left: 1px !important
+
+  p, blockquote, dl, dt, ul, ol, table, form, textarea, details
+    margin: 0 0 2.4rem
+
+  figure
+    margin: 2.4rem 0 2.4rem
+
+  pre
+    margin: 0 0 2.4rem !important
+
+  h2, h3, h4, h5, h6
+    margin: 4rem 0 1.6rem
+
+  h1
+    margin: 0 0 1.6rem
+
+  h2:first-child
+    margin-top: 5rem
+
+  h2 + h3
+    margin-top: 3.2rem
+
+  h3 + h4,
+  h4 + h5
+    margin-top: 2.4rem
+
+  h5 + h6
+    margin-top: 1.6rem
+
+  +until($main-breakpoint)
+    font-size: 1.5rem
+    line-height: 2.45rem
+
+    ol
+      padding-left: 1.72rem
+      @supports (-webkit-hyphens: none)
+        padding-left: 2.2rem
+
+    li
+      margin: 0 0 1.6rem
+
+    p, blockquote, dl, dt, ul, ol, table, form, textarea, details
+      margin: 0 0 2rem
+
+    figure
+      margin: 2rem 0 2rem
+
+    pre
+      font-size: 1.2rem !important
+      margin: 0 0 2rem !important
+
+.post
+  .inner
+    +inner($post-max-width, $post-breakpoint)
+
+  .content
+    +inner($post-content-max-width, $post-content-breakpoint)
+    margin: 6.4rem auto 1.6rem
+
+    &.only-content
+      margin-bottom: 6.4rem
+
+    a
+      color: $link
+      overflow-wrap: break-word
+
+      &:visited
+        color: $link-visited
+
+      &:focus,
+      &:hover
+        border-bottom: 1px dotted currentColor
+
+  &__header
+    margin: 0 0 4rem
+    +flex-col-cross-center
+
+    .primary-tag
+      display: inline-block
+      vertical-align: middle
+      background-color: $button
+      border-radius: 4px
+      color: $white
+      font-size: $size-12
+      height: 2em
+      line-height: 2em
+      padding: 0 .75em
+      white-space: nowrap
+      margin-bottom: .8rem
+      text-transform: uppercase
+
+      a
+        color: currentColor
+
+        &:visited
+          color: currentColor
+
+    .title
+      margin-bottom: 1.3rem
+      text-align: center
+
+    .meta
+      display: block
+      font-size: $size-12
+      line-height: 1.5
+      font-weight: $weight-medium
+      color: $grey
+
+      span:not(:last-child)
+        margin-right: .2857em
+
+      a
+        color: $link
+
+  &__excerpt
+    display: block
+    margin: 4rem 0 4rem
+    color: $grey
+
+  &__cover
+    +flex-col-cross-center
+
+    .wrap
+      width: 100vw
+      max-width: $post-max-width
+
+    figure
+      position: relative
+      padding-top: 56.25%
+      margin: 0
+
+    img
+      @extend %overlay
+      display: block
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+  &__tags
+    margin-top: 4rem
+
+    .post-tag:not(:last-of-type)
+      margin-right: .75em
+
+  &__extra
+    display: block
+    +inner($post-content-max-width, $post-content-breakpoint)
+
+  &__authors
+    margin: 4rem 0
+
+  &__author
+    +flex-row-cross-center
+    &:not(:last-child)
+      margin: 4rem 0
+
+    .avatar
+      align-self: stretch
+      margin-right: 2.4rem
+      +avatar(7rem)
+
+    .name
+      display: block
+      font-size: 1em
+      font-weight: $weight-semibold
+      transition: color .3s ease
+
+      &:focus,
+      &:hover
+        color: $link
+
+    .bio
+      display: block
+      font-size: .875em
+      margin-top: .8rem
+
+    .social
+      +hlevel
+      margin-top: 2rem
+
+      .icon
+        +svg-full-wrap(1.6rem)
+        &:not(:last-child)
+          margin-right: 1.4rem
+
+        &:focus,
+        &:hover
+          svg
+            color: $primary
+            transform: scale(1.8)
+
+        svg
+          transition: transform .4s ease, color .2s ease
+
+.next
+  display: flex
+  margin: 2.4rem 0 4.8rem
+  +from($post-content-breakpoint)
+    justify-content: space-between
+  +until($post-content-breakpoint)
+    flex-direction: column
+
+  .flipping
+    +flex-col-default
+
+    +from($post-content-breakpoint)
+      max-width: 50%
+
+      &.left
+        padding-right: 1.6rem
+        text-align: left
+
+      &.right
+        padding-left: 1.6rem
+        text-align: right
+    +until($post-content-breakpoint)
+      align-items: center
+      text-align: center
+
+    .tips
+      display: inline-block
+      font-size: $size-small
+      color: $grey
+      text-transform: uppercase
+      margin-bottom: .8rem
+      letter-spacing: 1.5px
+
+    .title
+      display: inline-block
+      font-size: 1em
+      transition: color .3s ease
+
+      &:focus,
+      &:hover
+        color: $link
+
+  .divider
+    display: none
+    width: 100%
+    margin: 2.4rem 0
+    border-top: 1px dashed $grey-02
+
+    +until($post-content-breakpoint)
+      & + .divider
+        display: block

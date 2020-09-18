@@ -1,0 +1,68 @@
+
+$main-max-width: 720px
+
+\:root
+  --system-fonts: #{$base-sans-serif}
+  font-family: var(--system-fonts)
+
+\:root.is-dark-mode
+  body
+    background-image: radial-gradient(rgba(255,255,255,.03) 1px,transparent 0),radial-gradient(rgba(255,255,255,.03) 1px,transparent 0)
+    background-size: 40px 40px,40px 40px
+    background-position: 0 0,20px 20px
+    min-height: 100vh
+
+\:root:not(.is-dark-mode)
+  body
+    background-image: radial-gradient(rgba(0,0,0,.06) 1px,transparent 0),radial-gradient(rgba(0,0,0,.06) 1px,transparent 0)
+    background-size: 40px 40px,40px 40px
+    background-position: 0 0,20px 20px
+    min-height: 100vh
+
+body
+  &.body-context
+    +flex-col-default
+
+    & > header,
+    & > footer
+      flex: 0 0 auto
+
+    & > main,
+    & > .post.outer
+      flex: 1 0 auto
+
+\:root.is-dark-mode
+  img:not(.avatar-img)
+    filter: grayscale(30%)
+    transition: filter .3s ease
+
+    &:hover
+      filter: grayscale(0%)
+
+.outer
+  padding: 0 2.4rem
+
+.inner
+  +inner($main-max-width, $main-breakpoint)
+
+.main
+  .content
+    margin: 4.8rem 0
+
+.posts
+  &:not(:last-child)
+    margin: 0 0 4.8rem
+  .tag-name
+    display: inline-block
+    font-size: 2rem
+    margin: 0  0 3.2rem 0
+
+    &::after
+      content: ""
+      display: block
+      height: .5rem
+      background-image: linear-gradient($background 0%,  $primary 50%)
+
+  hr
+    margin: 4.2rem 0
+

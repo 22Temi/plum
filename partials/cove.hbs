@@ -1,0 +1,70 @@
+<button id="load-comments" class="load-comments" type="button" data-error-tips="{{t "Can't load comments"}}"
+        onClick="initCove(); return false;">
+    {{> "icons/spinner"}}
+    {{t "Load comments"}}
+</button>
+
+<div id="cove-thread" class="hidden">
+    <h2><span id="cove-count"></span> {{t "Comments"}}</h2>
+    <div id="cove"></div>
+</div>
+
+<script>
+    const Cove = {
+        publication: "",
+        contentId: "{{comment_id}}",
+        memberId: "{{@member.uuid}}",
+        memberEmail: "{{@member.email}}",
+    };
+
+    if ((typeof covePublication === 'string') && covePublication) {
+        Cove.publication = covePublication;
+    }
+
+    function coveReply() {
+        var isMember = false;
+
+        {{#if @member}}
+            isMember = true;
+        {{/if}}
+
+        if(isMember) {
+            return;
+        }
+
+        document.querySelectorAll('#cove .cove-reply').forEach(function (replayElement) {
+           replayElement.href = '#footer';
+           replayElement.addEventListener('click', function () {
+              document.querySelector('.input.email').focus();
+           });
+        });
+    }
+
+    function initCove() {
+        var loadCommentsElement = document.querySelector('#load-comments');
+        if(loadCommentsElement.classList.contains('loaded')) {
+            return;
+        }
+        loadCommentsElement.classList.add('loading');
+
+        var d = document, s = d.createElement('script');
+        s.src = "https://cdn.cove.chat/comments.js";
+        s.async = true;
+        (d.head || d.body).appendChild(s);
+
+        setTimeout(function () {
+            var loadCommentsElement = document.querySelector('#load-comments');
+
+            if (document.querySelector('#cove').innerHTML !== '') {
+                loadCommentsElement.classList.add('hidden');
+                coveReply();
+                document.querySelector('#cove-thread').classList.remove('hidden');
+            } else {
+                loadCommentsElement.innerText = loadCommentsElement.getAttribute('data-error-tips');
+            }
+
+            loadCommentsElement.classList.remove('loading');
+            loadCommentsElement.classList.add('loaded');
+        }, 3000);
+    }
+</script>

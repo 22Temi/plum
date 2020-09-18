@@ -1,0 +1,31 @@
+{{#if @member}}
+    <div class="field">
+        <span>{{t "Signed in as {email}" email=@member.email}}</span>
+        <div class="control">
+            <button class="button signout" type="button" role="button" data-members-signout>
+                {{> "icons/signout-alt"}}
+                {{t "Sign Out"}}
+            </button>
+        </div>
+    </div>
+{{else}}
+    <form data-members-form="subscribe">
+        <div class="wrap">
+            <div class="field">
+                <div class="control email">
+                    <input data-members-email class="input email" type="email"
+                           placeholder="{{t "Enter Your Email"}}"
+                           required>
+                </div>
+                <div class="control">
+                    <button class="button subsrb" type="submit">
+                        {{> "icons/paper-plane"}}
+                        {{t "Subscribe"}}
+                    </button>
+                </div>
+            </div>
+            <p class="tips success" role="alert" aria-relevant="text">{{t "Great! Please check your Email inbox."}}</p>
+            <p class="tips error" data-members-error role="alert" aria-relevant="text"></p>
+        </div>
+    </form>
+{{/if}}

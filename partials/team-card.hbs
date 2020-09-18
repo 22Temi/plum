@@ -1,0 +1,21 @@
+<div class="card-wrap">
+    <a class="card" href="{{url}}">
+        {{#if profile_image}}
+            <div class="avatar-wrap">
+                <div class="avatar">
+                    <figure>
+                        <img class="avatar-img" alt="{{name}}"
+                             srcset="{{img_url profile_image size="xxs"}} 1x, {{img_url profile_image size="xs"}} 2x, {{img_url profile_image size="s"}} 3x"
+                             src="{{img_url profile_image size="s"}}">
+                    </figure>
+                </div>
+            </div>
+        {{/if}}
+        {{#if bio}}
+            <div class="bio">
+                <p>{{bio}}</p>
+            </div>
+        {{/if}}
+        <p class="name">{{name}}</p>
+    </a>
+</div>

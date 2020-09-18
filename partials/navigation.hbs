@@ -1,0 +1,56 @@
+{{#if isSecondary}}
+    <nav class="secondary-navbar" aria-label="{{t "secondary navigation"}}">
+        {{#foreach navigation}}
+            <a href="{{url absolute="true"}}" class="icon">
+                {{> (concat "icons/" label)}}
+                <span>{{label}}</span>
+            </a>
+        {{/foreach}}
+    </nav>
+{{else}}
+    <div class="menu-bar">
+        <nav class="menu" aria-label="{{t "menu navigation"}}">
+            {{#if @site.navigation}}
+                {{#foreach navigation}}
+                    <a class="menu__item" href="{{url absolute="true"}}">
+                        {{label}}
+                    </a>
+                {{/foreach}}
+            {{/if}}
+            <a id="menu-tags" class="menu__item" href="#">
+                {{t "Tags"}}
+            </a>
+        </nav>
+        <div class="menu-icons">
+            {{> search}}
+            <div class="divider"></div>
+            <div class="dark-button sun" role="button" aria-label="{{t "switch to dark mode"}}" tabindex="0">
+                {{> "icons/sun"}}
+            </div>
+            <div class="dark-button moon disabled" role="button" aria-hidden="true" aria-label="{{t "switch to light mode"}}">
+                {{> "icons/moon"}}
+            </div>
+            <div class="dark-button shadow-sun disabled" aria-hidden="true">
+                {{> "icons/sun"}}
+            </div>
+            <script>
+                var isDarkMode = document.documentElement.classList.contains('is-dark-mode');
+                if (isDarkMode) {
+                    var sunButton = document.querySelector('.dark-button.sun');
+                    var moonButton = document.querySelector('.dark-button.moon');
+                    var useDarkMode = sunButton && moonButton;
+
+                    if (useDarkMode) {
+                        sunButton.classList.add('disabled');
+                        sunButton.removeAttribute('tabindex');
+                        sunButton.setAttribute('aria-hidden', 'true');
+
+                        moonButton.classList.remove('disabled');
+                        moonButton.setAttribute('tabindex', '0');
+                        moonButton.removeAttribute('aria-hidden');
+                    }
+                }
+            </script>
+        </div>
+    </div>
+{{/if}}

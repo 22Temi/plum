@@ -1,0 +1,43 @@
+<footer id="footer" class="footer outer">
+    <div class="inner">
+        <div class="content">
+            {{#if @labs.members}}
+                <div id="subscribe" class="subscribe">
+                    <div class="header">
+                        <h1 class="title">{{t "Join the Newsletter"}}</h1>
+                        <h4 class="subtitle">{{t "Get updates through your email or RSS (you can unsubscribe at any time)."}}</h4>
+                    </div>
+                    <div class="field">
+                        {{> subscribe-form}}
+                        {{^if @member}}
+                            <span class="divider">{{t "OR"}}</span>
+                            <div class="control">
+                                <a class="button" href="{{@site.url}}/rss/" target="_blank" rel="noopener noreferrer">
+                                    {{> "icons/rss"}}
+                                    RSS
+                                </a>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+
+            <div class="primary">
+                {{navigation type="secondary"}}
+                <span class="copyright">© 2020 <a href="{{@site.url}}">{{@site.title}}</a></span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var subscribeForm = document.querySelector('#subscribe form');
+
+    subscribeForm && subscribeForm.addEventListener('submit', function () {
+        window.setTimeout(function () {
+            document.querySelector('#subscribe form').classList.remove('success', 'error');
+        }, 10000);
+
+        localStorage.loginRedirectAfterSubscribing = window.location.href.replace(window.location.search, '');
+    });
+</script>

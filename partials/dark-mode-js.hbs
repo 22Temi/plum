@@ -1,0 +1,17 @@
+<script>
+    var ucs = localStorage.getItem('userColorScheme');
+    var useDarkMode = ucs && (ucs === 'dark');
+    var useLightMode = ucs && (ucs === 'light');
+
+    var mqDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (useDarkMode) {
+        document.documentElement.classList.add('user-color-scheme');
+        document.documentElement.classList.add('is-dark-mode');
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (useLightMode) {
+        document.documentElement.classList.add('user-color-scheme');
+    } else if (mqDark) {
+        document.documentElement.classList.add('is-dark-mode');
+    }
+</script>

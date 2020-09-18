@@ -1,0 +1,33 @@
+$tag-background-color: $grey-light !default
+$tag-color: $grey !default
+$tag-radius: $radius !default
+$tag-delete-margin: 1px !default
+
+.post-tags
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+
+  .post-tag
+    margin-bottom: 0.8rem
+    &:not(:last-child)
+      margin-right: 0.8rem
+  &:last-child
+    margin-bottom: -0.8rem
+  &:not(:last-child)
+    margin-bottom: 1.6rem
+
+.post-tag:not(body)
+  align-items: center
+  background-color: $tag-background-color
+  border-radius: $tag-radius
+  color: $tag-color
+  display: inline-flex
+  font-size: .875em
+  height: 2em
+  justify-content: center
+  line-height: 1.5
+  padding-left: 0.75em
+  padding-right: 0.75em
+  white-space: nowrap

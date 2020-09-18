@@ -1,0 +1,100 @@
+
+.modal.search
+  justify-content: flex-start
+  opacity: 0
+  z-index: -1
+  transform: scale(.96)
+  transition: transform .25s cubic-bezier(0.215,0.61,0.355,1)
+
+  &.is-active
+    opacity: 1
+    z-index: $z-index-100
+    transform: scale(1)
+
+  .results
+    overflow: auto
+    margin: 2.4rem 0 0
+    counter-reset: item-counter
+    position: relative
+
+  .item
+    position: relative
+    font-size: 1.6rem
+    font-weight: $weight-semibold
+    margin: 0 0 1.6rem
+    width: 100%
+    counter-increment: item-counter
+    transition: transform .25s ease
+
+    &:hover
+      .title
+        color: $link
+      &:not(:first-of-type)
+        transform: translateY(-4px)
+
+    &::before
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      color: $primary
+      font-style: italic
+      left: 1.5rem
+      content: counter(item-counter)'.'
+
+  .title
+    display: block
+    color: $scheme-invert
+    background: $scheme-main
+    padding: 1.6rem 1.6rem 1.6rem 4rem
+    border-radius: 4px
+    transition: color .25s ease
+
+  .tips
+    display: none
+    align-self: flex-start
+    font-size: 1.2rem
+    margin: 1rem 0 0
+
+    &.error
+      color: $danger
+
+    &.is-active
+      display: block
+
+.modal-content.search
+  margin-top: 7rem
+
+.field.search
+  flex-direction: column
+  flex: 0 0 auto
+
+.modal-background.search
+  background: $grey-light
+
+.control.search
+  width: 100%
+  position: relative
+
+.input.search
+  padding-left: $control-height
+
+  &[disabled]
+    cursor: wait
+
+.control.loading,
+.control.loaded
+  svg
+    position: absolute
+    top: 1.2rem
+    left: 1.2rem
+    z-index: $z-index-10
+    width: 1.6rem
+    height: 1.6rem
+
+.control.loading
+  svg.search
+    display: none
+
+.control.loaded
+  svg.spinner
+    display: none

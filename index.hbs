@@ -1,0 +1,38 @@
+{{!< default}}
+
+<main class="main outer">
+    <div class="inner">
+        <div class="content">
+            {{#is "index"}}
+                {{^is "paged"}}
+                    {{#get "posts" filter="featured:true" limit=3 include="authors,tags"}}
+                        {{#if posts}}
+                            <div class="posts">
+                                <div class="tag-name">{{t "Featured"}}</div>
+
+                                {{#foreach posts}}
+                                    {{> "post-card"}}
+                                    <hr>
+                                {{/foreach}}
+                            </div>
+                        {{/if}}
+                    {{/get}}
+                {{/is}}
+            {{/is}}
+
+            <div class="posts">
+                {{^is "paged"}}
+                    <div class="tag-name">{{t "Latest"}}</div>
+                {{/is}}
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                    <hr>
+                {{/foreach}}
+            </div>
+
+            {{pagination}}
+        </div>
+    </div>
+</main>
+
+{{> common}}

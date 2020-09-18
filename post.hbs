@@ -1,0 +1,131 @@
+{{!< default}}
+
+{{#post}}
+    <div class="post outer">
+        <div class="inner">
+            <main class="content">
+                <header class="post__header">
+                    {{#if primary_tag}}
+                        {{#primary_tag}}
+                            <div class="primary-tag"><a href="{{url}}">{{name}}</a></div>
+                        {{/primary_tag}}
+                    {{/if}}
+                    <h1 class="title">{{title}}</h1>
+                    <div class="meta">
+                        {{#primary_author}}
+                            <span><a href="{{url}}">{{name}}</a></span>
+                        {{/primary_author}}
+                        <span class="dot-divider">•</span>
+                        <span class="post-datetime" data-post-date="{{date format="x"}}">{{date format="YYYY-MM-DD"}}</span>
+                    </div>
+                </header>
+                <section class="post-content">
+                    {{#if feature_image}}
+                        <div class="post__cover">
+                            <div class="wrap">
+                                <figure>
+                                    <img srcset="{{img_url feature_image size="s"}} 420w, {{img_url feature_image size="m"}} 840w, {{img_url feature_image size="l"}} 1536w, {{img_url feature_image size="xl"}} 2048w"
+                                         sizes="(min-width: 1216px) 1216px, 100vw"
+                                         src="{{img_url feature_image size="l"}}" alt="">
+                                </figure>
+                            </div>
+                        </div>
+                    {{/if}}
+
+                    {{#if excerpt}}
+                        <div class="post__excerpt">
+                            <p>{{excerpt}}</p>
+                        </div>
+                    {{/if}}
+                    {{content}}
+                </section>
+
+                {{#if tags}}
+                    <footer class="post__tags post-tags">
+                        {{#foreach tags}}
+                            <a class="post-tag" href="{{url}}"># {{name}}</a>
+                        {{/foreach}}
+                    </footer>
+                {{/if}}
+            </main>
+
+            <div class="post__extra">
+                <hr>
+                {{#if authors}}
+                    <div class="post__authors">
+                        {{#foreach authors}}
+                            <div class="post__author">
+                                {{#if profile_image}}
+                                    <a href="{{url}}" class="avatar">
+                                        <figure>
+                                            <img class="avatar-img" alt="{{name}}"
+                                                 srcset="{{img_url profile_image size="xxs"}} 1x, {{img_url profile_image size="xs"}} 2x, {{img_url profile_image size="s"}} 3x"
+                                                 src="{{img_url profile_image size="s"}}">
+                                        </figure>
+                                    </a>
+                                {{/if}}
+                                <div>
+                                    <a class="name" href="{{url}}">{{name}}</a>
+                                    {{#if bio}}
+                                        <div class="bio">{{bio}}</div>
+                                    {{/if}}
+                                    <div class="social">
+                                        {{#if twitter}}
+                                            <a href="{{twitter_url}}" class="icon" aria-label="twitter">
+                                                {{> "icons/twitter"}}
+                                            </a>
+                                        {{/if}}
+                                        {{#if facebook}}
+                                            <a href="{{facebook_url}}" class="icon" aria-label="facebook">
+                                                {{> "icons/facebook"}}
+                                            </a>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{/foreach}}
+                    </div>
+                    <hr>
+                {{/if}}
+
+                <div class="next">
+                    <div class="flipping left">
+                        {{#next_post}}
+                            <div class="tips">{{t "newer post"}}</div>
+                            <a href="{{url}}" class="title">{{title}}</a>
+                        {{/next_post}}
+                    </div>
+                    {{#next_post}}
+                        <div class="divider"></div>
+                    {{/next_post}}
+                    {{#prev_post}}
+                        <div class="divider"></div>
+                    {{/prev_post}}
+                    <div class="flipping right">
+                        {{#prev_post}}
+                            <div class="tips">{{t "older post"}}</div>
+                            <a href="{{url}}" class="title">{{title}}</a>
+                        {{/prev_post}}
+                    </div>
+                </div>
+
+                {{> comments}}
+
+            </div>
+        </div>
+    </div>
+{{/post}}
+
+{{> common}}
+
+{{> img-modal}}
+
+{{!--
+{{#contentFor "prism-css"}}
+    {{> prism-css}}
+{{/contentFor}}
+
+{{#contentFor "prism-js"}}
+    {{> prism-js}}
+{{/contentFor}}
+--}}

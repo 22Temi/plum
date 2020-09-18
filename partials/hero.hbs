@@ -1,0 +1,20 @@
+<div class="home-hero outer">
+    <div class="inner">
+        <div class="content">
+            <div class="header">
+                <a href="{{@site.url}}" class="logo">
+                    {{#if @site.logo}}
+                        <img alt="{{@site.title}}" src="{{@site.logo}}">
+                    {{else}}
+                        {{#> logo}}
+                            <div class="text-logo">{{@site.title}}</div>
+                        {{/logo}}
+                    {{/if}}
+                </a>
+                <div class="site-description">{{@site.description}}</div>
+            </div>
+
+            {{navigation}}
+        </div>
+    </div>
+</div>

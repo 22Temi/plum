@@ -1,0 +1,15 @@
+<script>
+    document.querySelectorAll('.post-datetime').forEach(function (element) {
+        var utc = element.getAttribute('data-post-date');
+        if (!utc) {
+            return;
+        }
+
+        utc = parseInt(utc);
+        if (utc !== utc) {
+            return;
+        }
+
+        element.innerText = (new Date(utc)).toLocaleDateString();
+    })
+</script>

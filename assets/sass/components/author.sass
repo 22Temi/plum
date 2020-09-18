@@ -1,0 +1,45 @@
+
+.author-hero
+  .content
+    +flex-col-center
+    margin: 6.4rem 0 0
+
+  .avatar
+    margin-bottom: .4rem
+    +avatar(9.6rem)
+
+  .name
+    font-size: $size-large
+    font-weight: $weight-bold
+
+  .bio
+    font-size: $size-normal
+    text-align: center
+    margin-top: .4rem
+
+  .line
+    +flex-row-center-wrap
+    margin-top: 1.6rem
+
+    span
+      font-size: $size-14
+      text-transform: uppercase
+      color: $grey
+      margin-right: .8rem
+
+    .icon
+      +svg-full-wrap(1.6rem)
+
+      &:not(:last-child)
+        margin-right: .8rem
+
+      &:focus,
+      &:hover
+        svg
+          color: $primary
+          transform: scale(1.8)
+
+      svg
+        transition: transform .4s ease, color .2s ease
+
+
