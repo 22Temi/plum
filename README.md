@@ -2,8 +2,6 @@
 
 A clean, responsive Ghost CMS theme.
 
-[Here](https://22temi.cc/) is the demo & document website.
-
 ## Main Features
 
 * Support Ghost 1.x, Ghost 2.x, Ghost 3.x;
