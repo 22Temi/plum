@@ -24,7 +24,6 @@ projectFilesBackup
 
 dist/
 
-assets/built/
 assets/css/
 
 .sass-cache/
