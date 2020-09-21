@@ -35,7 +35,7 @@ You can then upload the `dist/plum.zip` to the Ghost Admin.
 
 ## Screenshot
 
-![plum-theme-screenshot](https://user-images.githubusercontent.com/71486917/93744400-56974d80-fc24-11ea-831e-7acba43023b6.jpg)
+![plum-theme-screenshot](https://user-images.githubusercontent.com/71486917/93749203-1936be00-fc2c-11ea-94af-8b77670a4bf0.jpg)
 
 ## License
 
